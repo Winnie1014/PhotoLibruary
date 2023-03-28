@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>Image/Folder.png</file>
+        <file>Image/icon.jpg</file>
+        <file>Image/Plus.png</file>
+        <file>Image/Trash.png</file>
+    </qresource>
+    <qresource prefix="/trans">
+        <file>Photos_en_GB.ts</file>
+        <file>Photos_en_GB.qm</file>
+    </qresource>
+</RCC>
