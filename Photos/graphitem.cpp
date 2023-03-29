@@ -43,6 +43,6 @@ void graphItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 //    label.setPixmap(zoom);
 //    layout.addWidget(&label);
 //    widget.adjustSize();
-   // widget.resize(1536, 864);
+    widget.resize(1536, 864);
     widget.exec();
 }

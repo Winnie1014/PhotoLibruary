@@ -31,7 +31,6 @@ DrawingWidget::DrawingWidget(const QString& Ipath ,QWidget *parent) : QDialog(pa
 
     mainLayout->setMenuBar(bar);
 
-
     connect(None, &QAction::triggered, this, &DrawingWidget::setNoneMode);
     connect(Circle, &QAction::triggered, this, &DrawingWidget::setCircleMode);
     connect(Line, &QAction::triggered, this, &DrawingWidget::setLineMode);
@@ -42,13 +41,17 @@ DrawingWidget::DrawingWidget(const QString& Ipath ,QWidget *parent) : QDialog(pa
     setMouseTracking(false);
     z_image = m_image.scaled(1919, 1116, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 
-    mainLayout->addWidget(&piclable);
-
-
     setLayout(mainLayout);
-    piclable.setPixmap(z_image);
-    painter.setPen(QPen(Qt::black, 5));
-    painter.setBrush(Qt::NoBrush);
+
+
+    image.load(Ipath);
+
+
+
+    //mainLayout->addWidget(&piclable);
+//    piclable.setPixmap(z_image);
+//    painter.setPen(QPen(Qt::black, 5));
+//    painter.setBrush(Qt::NoBrush);
 
 }
 
@@ -101,7 +104,6 @@ void DrawingWidget::mouseReleaseEvent(QMouseEvent *event) {
 void DrawingWidget::paintEvent(QPaintEvent *event) {
     Q_UNUSED(event)
     QDialog::paintEvent(event);
-    update();
     updatePixmap();
 
 }
@@ -125,8 +127,8 @@ void DrawingWidget::setNoneMode(){
 
 void DrawingWidget::updatePixmap(){
 
-    QPainter painter(&z_image);
-//    painter.begin(&z_image);
+    QPainter painter(this);
+    painter.drawImage(QPoint(0, 0), image);
 
     painter.setPen(QPen(Qt::black, 2));
     painter.setBrush(Qt::NoBrush);
@@ -167,9 +169,7 @@ void DrawingWidget::updatePixmap(){
         painter.end();
 
     }
-   // painter.end();
 
-//    piclable.setPixmap(z_image);
 }
 
 

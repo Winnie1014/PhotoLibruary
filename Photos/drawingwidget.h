@@ -32,6 +32,7 @@ protected:
 private:
     QPixmap m_image;
     QPixmap z_image;
+    QImage image;
     QPoint m_startPoint;
     QPoint m_endPoint;
     bool m_isDrawing = false;
@@ -39,7 +40,7 @@ private:
     QList<QLine> m_lines;
     QList<QRect> m_circles;
     QPainter painter;
-    QLabel piclable;
+    //QLabel piclable;
     //QWidget *widd;
     enum Shape {Rectangle, Line, Circle, None};
     Shape m_currShape = None;
