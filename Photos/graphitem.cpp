@@ -1,11 +1,12 @@
 #include "graphitem.h"
+#include "drawingwidget.h"
+
 #include <QDebug>
 #include <QLabel>
 
 #include <QHBoxLayout>
 #include <QDialog>
 #include <QPixmap>
-#include "drawingwidget.h"
 
 graphItem::graphItem(const QPixmap &pixmap, QString path): QGraphicsPixmapItem(pixmap), m_path(path)
 {
@@ -43,6 +44,14 @@ void graphItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 //    label.setPixmap(zoom);
 //    layout.addWidget(&label);
 //    widget.adjustSize();
-    widget.resize(1536, 864);
+
+    qimage.load(m_path);
+    qreal ratio = static_cast<qreal>(qimage.width()) / static_cast<qreal>(qimage.height());
+
+    qDebug() << "qimagesize" << qimage.width() << qimage.height() << "qratio" <<ratio;
+
+    widget.resize(static_cast<qreal>(864) * ratio, 864);
+    qDebug() << "diawidth" << 864 * ratio;
+//    widget.setMinimumSize(1536, 864);
     widget.exec();
 }

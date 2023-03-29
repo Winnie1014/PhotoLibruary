@@ -73,6 +73,7 @@ void DrawingWidget::mousePressEvent(QMouseEvent *event) {
         m_startPoint = event->pos();
         m_isDrawing = true;
     }
+    update();
 }
 
 void DrawingWidget::mouseMoveEvent(QMouseEvent *event) {

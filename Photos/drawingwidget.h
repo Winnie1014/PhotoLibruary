@@ -11,6 +11,8 @@
 #include <QAction>
 #include <QLayout>
 #include <QLabel>
+#include <QTransform>
+
 
 class DrawingWidget : public QDialog
 {
@@ -41,10 +43,13 @@ private:
     QList<QRect> m_circles;
     QPainter painter;
     //QLabel piclable;
-    //QWidget *widd;
+    QWidget *widd;
     enum Shape {Rectangle, Line, Circle, None};
     Shape m_currShape = None;
 
+    qreal ratio;
+
+    QTransform m_transform;
     void updatePixmap();
 
 signals:
