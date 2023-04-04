@@ -30,6 +30,8 @@ protected:
     void setLineMode();
     void setRectMode();
     void setNoneMode();
+    void updatePixmap();
+
 
 private:
     QPixmap m_image;
@@ -48,9 +50,10 @@ private:
     Shape m_currShape = None;
 
     qreal ratio;
+    qreal scaleX;
+    qreal scaleY;
 
     QTransform m_transform;
-    void updatePixmap();
 
 signals:
 

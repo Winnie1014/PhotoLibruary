@@ -73,6 +73,7 @@ void DrawingWidget::mousePressEvent(QMouseEvent *event) {
         m_startPoint = event->pos();
         m_isDrawing = true;
     }
+    qDebug() <<"press";
 }
 
 void DrawingWidget::mouseMoveEvent(QMouseEvent *event) {
@@ -89,6 +90,7 @@ void DrawingWidget::mouseReleaseEvent(QMouseEvent *event) {
 
         switch (m_currShape) {
         case None:{
+
         }
             break;
         case Rectangle:{
@@ -135,6 +137,13 @@ void DrawingWidget::setRectMode(){
 
 void DrawingWidget::setNoneMode(){
     m_currShape = None;
+    m_rectangles.clear();
+    m_lines.clear();
+    m_circles.clear();
+    scaleX = 1;
+    scaleY = 1;
+    m_transform = QTransform::fromScale(1, 1);
+    update();
 }
 
 
@@ -203,8 +212,8 @@ void DrawingWidget::resizeEvent(QResizeEvent *event){
 //    int newHeight = qMin(newSize.height(), static_cast<int>(newSize.width() / ratio));
 
 
-    qreal scaleX = static_cast<qreal>(width) / (static_cast<qreal>(864) * ratio);
-    qreal scaleY = static_cast<qreal>(heigh) / 864;
+    scaleX = static_cast<qreal>(width) / (static_cast<qreal>(864) * ratio);
+    scaleY = static_cast<qreal>(heigh) / 864;
     qDebug() << "imagesize" << z_image.width()<< z_image.height();
 
     qDebug() << "scalewidth" << static_cast<qreal>(width);

@@ -74,7 +74,7 @@ void PhotoLibrary::LoadImages(const QString &path, QGraphicsScene *scene)
             item->setFlag(QGraphicsItem::ItemIsSelectable, true);
             scene->addItem(item);
             ++x;
-            if (x >= 5) {
+            if (x >= 8) {
                 x = 0;
                 ++y;
             }
